@@ -45,3 +45,8 @@ RandomForestClassifier(n_estimators=10000, max_features='sqrt',  max_depth=4)
 predicted_test_rf = rf_clf.predict(x_test)
 print(accuracy_score(y_test, predicted_test_rf))
 print(confusion_matrix(y_test, predicted_test_rf))
+
+f_imp_list = list(zip(x_test.columns, rf_clf.feature_importances_))
+f_imp_list.sort(key = lambda x: x[1], reverse = True)
+
+print(f_imp_list[:3])
